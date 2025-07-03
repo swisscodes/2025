@@ -8,7 +8,7 @@ all aspects of how Git looks and operates. These variables can be stored in thre
  specifically. Because this is a system configuration file, you would need administrative or
  superuser privilege to make changes to it.
 
-2. ~/.gitconfig or ~/.config/git/config file: Values specific personally to you, the user. You can
+2. $\color{red}{\~/.gitconfig \ or \~/.config/git/config}$ file: Values specific personally to you, the user. You can
  make Git read and write to this file specifically by passing the --global option, and this affects
  all of the repositories you work with on your system.
 3. config file in the Git directory (that is, .git/config) of whatever repository you’re currently
