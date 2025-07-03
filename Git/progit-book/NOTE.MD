@@ -27,3 +27,46 @@ C:\ProgramData\Git\config on Windows Vista and newer. This config file can only 
  config -f `<file>` as an admin.
  You can view all of your settings and where they are coming from using:
  $ git config --list --show-origin
+
+## clone
+
+ $ git clone <https://github.com/libgit2/libgit2> mylibgit
+
+## Checking the Status of Your Files
+
+$ git status
+Short Status
+git status -s
+
+ New files that aren’t tracked have a ?? next to them,
+ new files that have been added to the staging area have an A,
+ modified files have an M and so on
+
+## .gitignore
+
+The rules for the patterns you can put in the .gitignore file are as follows:
+ • Blank lines or lines starting with # are ignored.
+ • Standard glob patterns work, and will be applied recursively throughout the entire working
+ tree.
+ • You can start patterns with a forward slash (/) to avoid recursivity.
+ • You can end patterns with a forward slash (/) to specify a directory.
+ • You can negate a pattern by starting it with an exclamation point (!)
+
+ Glob patterns are like simplified regular expressions that shells use. An asterisk (*) matches zero or
+ more characters; [abc] matches any character inside the brackets (in this case a, b, or c); a question
+ mark (?) matches a single character; and brackets enclosing characters separated by a hyphen ([0
+9]) matches any character between them (in this case 0 through 9). You can also use two asterisks to
+ match nested directories; a/**/z would match a/z, a/b/z, a/b/c/z, and so on.
+
+/# ignore all .a files
+ *.a
+/# but do track lib.a, even though you're ignoring .a files above
+ !lib.a
+/# only ignore the TODO file in the current directory, not subdir/TODO
+ /TODO
+/# ignore all files in any directory named build
+ build/
+/# ignore doc/notes.txt, but not doc/server/arch.txt
+ doc/*.txt
+/# ignore all .pdf files in the doc/ directory and any of its subdirectories
+ doc/**/*.pdf
