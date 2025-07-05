@@ -42,6 +42,16 @@ git status -s
  new files that have been added to the staging area have an A,
  modified files have an M and so on
 
+git diff command
+    use it most often to answer these two questions: What have you
+    changed but not yet staged? And what have you staged that you are about to commit? Although git
+    status answers those questions very generally by listing the file names, git diff shows you the
+    exact lines added and removed — the patch, as it were.
+
+ If you want to see what you’ve staged that will go into your next commit, you can use git
+    diff --staged. This command compares your staged changes to your last commit:
+    and git diff --cached to see what you’ve staged so far (--staged and --cached are synonyms):
+
 ## .gitignore
 
 The rules for the patterns you can put in the .gitignore file are as follows:
@@ -75,3 +85,54 @@ The rules for the patterns you can put in the .gitignore file are as follows:
 
 \# ignore all .pdf files in the doc/ directory and any of its subdirectories\
  doc/**/*.pdf
+
+## commit
+
+Adding the -a option to the git commit command makes
+ Git automatically stage every file that is already tracked before doing the commit, letting you skip
+ the git add part
+
+## Removing Files
+
+git rm PROJECTS.md\
+force the removal with the -f option\
+git rm -f this forces the file or folder that was already modified or in a staged area
+
+ Another useful thing you may want to do is to keep the file in your working tree but remove it from
+ your staging area. In other words, you may want to keep the file on your hard drive but not have
+ Git track it anymore. This is particularly useful if you forgot to add something to your .gitignore
+file and accidentally staged it, like a large log file or a bunch of .a compiled files. To do this, use the--cached option:
+ $ git rm --cached README
+
+You can pass files, directories, and file-glob patterns to the git rm command. That means you can do
+ things such as:
+ $ git rm log/\*.log
+
+## Logging
+
+By default, with no arguments, git log lists the commits made in that repository in reverse
+ chronological order; that is, the most recent commits show up first.
+
+git log\
+Used to look the history of commits
+
+One of the more helpful options is -p or --patch, which shows the difference (the patch output)
+ introduced in each commit. You can also limit the number of log entries displayed, such as using -2
+ to show only the last two entries
+
+git log -p -2\
+
+if you want to see some abbreviated stats for each commit, you can use the --stat option:\
+
+git log --stat
+
+Another really useful option is --pretty\
+
+git log --pretty=oneline\
+git log --pretty=short\
+git log --pretty=full\
+git log --pretty=fuller\
+git log --pretty=format\
+e.g for format\
+git log --pretty=format:"%h - %an, %ar : %s"
+
