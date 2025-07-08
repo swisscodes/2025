@@ -171,17 +171,124 @@ git log --pretty=format:"%h - %an, %ar : %s"
  %cr Committer date, relative\
  %s Subject\
 
- ## Limiting Log Output
+## Limiting Log Output
 
 --since and --until\
 git log --since=2.weeks
 
-##  Undoing Things
+## Undoing Things
 
 git commit --amend
 
 This command takes your staging area and uses it for the commit. If you’ve made no changes since
  your last commit (for instance, you run this command immediately after your previous commit),
  then your snapshot will look exactly the same, and all you’ll change is your commit message.
+
+## Undoing things with git restore
+
+Git version 2.23.0 introduced a new command: git restore. It’s basically an alternative to git reset
+ which we just covered. From Git version 2.23.0 onwards, Git will use git restore instead of git
+ reset for many undo operations.
+
+ git restore --staged CONTRIBUTING.md
+
+## Unstaging a Staged File
+
+  git reset HEAD CONTRIBUTING.md
+  git restore CONTRIBUTING.md    use this to undo a modified file to revert changes back to last commited
+
+## Unmodifying a Modified File
+
+git checkout -- CONTRIBUTING.md
+
+## Working with Remotes
+
+you can run the\
+git remote\
+command. It lists the shortnames of each remote handle you’ve specified
+
+git remote -v,  -v, which shows you the URLs that Git has stored for the shortname to be used when reading and writing to that remote:
+
+git remote show origin
+
+git fetch \<remote>  this doesnt merge only fetch the remote data
+git pull \<remote> pull and merge
+
+git push origin master
+
+git remote rename pb paul
+
+ git remote remove paul
+
+## Tagging
+
+git tag
+
+git tag -a v1.4 -m "my version 1.4"
+
+git show v1.4
+
+Lightweight Tags : no information just the tag name e.g v1.0.0  no tagger name or commit sha\
+git tag v1.4-lw
+
+## Tagging Later
+
+ You can also tag commits after you’ve moved past them. Suppose your commit history looks like
+ this:
+
+ git tag -a v1.2 9fceb02   using the git commit sha
+
+## Sharing Tags
+ By default, the git push command doesn’t transfer tags to remote servers. You will have to explicitly
+ push tags to a shared server after you have created them. This process is just like sharing remote
+ branches — you can run git push origin \<tagname>
+
+ git push origin v1.5
+
+If you have a lot of tags that you want to push up at once
+
+git push origin --tags
+
+## Deleting Tags
+
+git tag -d v1.4-lw
+
+ Note that this does not remove the tag from any remote servers. to remove from remote server use
+
+ git push origin --delete \<tagname>
+
+Git Aliases
+
+ $ git config --global alias.co checkout
+ $ git config --global alias.br branch
+ $ git config --global alias.ci commit
+ $ git config --global alias.st status
+
+  This means that, for example, instead of typing git commit, you just need to type git ci.
+
+  git config --global alias.unstage 'reset HEAD --'\
+  This makes the following two commands equivalent:\
+  $ git unstage fileA
+  $ git reset HEAD -- fileA
+  
+## Git Branching
+
+git branch testing  : this creates the branch\
+git checkout testing : this switch to the branch
+
+This is shorthand for:
+git checkout -b testing
+
+From Git version 2.23 onwards you can use git switch instead of git checkout to:\
+git switch branch-name\
+git switch -c new-branch  create new branch and switch sametime  -c is short for --create
+
+ git branch -d hotfix  to delete a branch
+
+git push origin --delete serverfix   to delete a remote branch
+
+## Rebasing
+
+git rebase main
 
  testing out something else.
