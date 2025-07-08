@@ -291,4 +291,6 @@ git push origin --delete serverfix   to delete a remote branch
 
 git rebase main
 
- testing out something else.
+the rebase is almost same as pulling from a remote branch \
+but this time pulls locally from  main it moves the head of the branch to the current head of the main\
+so you dont need to do merge for a new commit.
