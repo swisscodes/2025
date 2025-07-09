@@ -92,6 +92,9 @@ Adding the -a option to the git commit command makes
  Git automatically stage every file that is already tracked before doing the commit, letting you skip
  the git add part
 
+git commit --amend  to amend a commit
+git commit --amend --no-edit incase no massage is needed
+
 ## Removing Files
 
 git rm PROJECTS.md\
@@ -291,6 +294,36 @@ git push origin --delete serverfix   to delete a remote branch
 
 git rebase main
 
+git rebase -i commit hash  interactive
+
+ $ git rebase -i HEAD~3  rebase the last 3 commits
+
 the rebase is almost same as pulling from a remote branch \
 but this time pulls locally from  main it moves the head of the branch to the current head of the main\
 so you dont need to do merge for a new commit.
+
+git stash pop   to bring back saved
+git stash apply
+git stash -u  to apply new files you never tracked before
+
+git stash list  to list stashed items
+
+git stash drop@{2}
+
+git stash clear
+
+ The changes to your files were reapplied, but the file you staged before wasn’t restaged. To do that,
+ you must run the git stash apply command with a --index option to tell the command to try to
+ reapply the staged changes. If you had run that instead, you’d have gotten back to your original
+ position:
+ $ git stash apply --index
+
+## git squashing
+
+git rebase -i commit hash  interactive
+
+in the interactive mode we can select what we want 
+s or squash for squashing and selecting how many commits
+
+another way to squash is using
+git merge --squash branch-name then we have to run git merge to merge into one commit
