@@ -1,3 +1,6 @@
 [submodule "docker/docker-up-and-running/hello-node-docker"]
 	path = docker/docker-up-and-running/hello-node-docker
 	url = https://github.com/spkane/docker-node-hello.git
+[submodule "docker/docker-up-and-running/rocketchat-hubot-demo"]
+	path = docker/docker-up-and-running/rocketchat-hubot-demo
+	url = https://github.com/spkane/rocketchat-hubot-demo.git
